@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "Source to Docs Sync",
+  "description": "Monitors Python source files, Jupyter notebooks, and markdown files in the repository. When changes are detected, triggers documentation updates in README.md or the assignments folder documentation.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/*.py",
+      "**/*.ipynb",
+      "assignments/**/*.md",
+      "ml_exercises/**/*.py"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Source files have been modified. Please review the changes and update the relevant documentation. If there's a README.md in the same directory as the changed files, update it. Otherwise, update the main README.md or relevant documentation in the assignments folder to reflect these code changes. Ensure documentation accurately describes the current functionality, usage examples, and any new features or modifications."
+  }
+}
